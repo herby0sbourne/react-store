@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom'; // In react-router-dom v6, "Sw
 import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/ShopPage';
 import Header from './components/header/Header';
-import SignInAndSignUp from './pages/signIn-signout/SignInSIgnUp';
-import { auth } from './firebase/firebase';
+import SignInAndSignUp from './pages/signIn-signup//SignInSIgnUp';
+import { auth, createUserProfileDocument } from './firebase/firebase';
 import './App.css';
 
 class App extends React.Component {
@@ -19,13 +19,21 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      // if (!user) return;
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
 
-      // const { uid, displayName, email } = user;
-
-      // this.setState({ currentUser: { uid,displayName,email} });
-      this.setState({ currentUser: user });
+        userRef.onSnapshot((snapShot) => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
+        });
+      } else {
+        this.setState({ currentUser: userAuth });
+      }
     });
   }
 
@@ -48,13 +56,5 @@ class App extends React.Component {
     );
   }
 }
-
-// function App() {
-//   return (
-//     <div>
-//       <HomePage />
-//     </div>
-//   );
-// }
 
 export default App;

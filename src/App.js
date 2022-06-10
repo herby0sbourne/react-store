@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // In react-router-dom v6, "Switch" is replaced by routes "Routes".
+import { Routes, Route, Navigate } from 'react-router-dom'; // In react-router-dom v6, "Switch" is replaced by routes "Routes".
 import { connect } from 'react-redux';
 import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/ShopPage';
@@ -43,16 +43,34 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/signin" element={<SignInAndSignUp />} />
+          <Route
+            path="/signin"
+            element={
+              this.props.currentUser ? (
+                <Navigate to="/" replace />
+              ) : (
+                <SignInAndSignUp />
+              )
+            }
+          />
+          {/* <Route path="/signin" element={<SignInAndSignUp />} /> */}
           {/* <Route path="/" component={HomePage} exact={true} /> */}
         </Routes>
       </div>
     );
   }
 }
+
+const mapStateToProps = ({ user }) => {
+  return {
+    currentUser: user.currentUser,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentUser: (user) => dispatch(setCurrentUser(user)),
   };
 };
-export default connect(undefined, mapDispatchToProps)(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

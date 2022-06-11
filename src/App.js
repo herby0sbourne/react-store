@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'; // In react-router-d
 import { connect } from 'react-redux';
 import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/ShopPage';
+import CheckOutPage from './pages/checkout/CheckOutPage';
 import Header from './components/header/Header';
 import SignInAndSignUp from './pages/signIn-signup//SignInSIgnUp';
 import { setCurrentUser } from './redux/user/userActions';
@@ -43,6 +44,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
           <Route
             path="/signin"
             element={

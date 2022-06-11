@@ -12,3 +12,17 @@ export const addToCart = (item) => {
     item,
   };
 };
+
+export const reduceItem = (item) => {
+  return {
+    type: cartActionTypes.REDUCE_ITEM,
+    item,
+  };
+};
+
+export const removeFromCart = (id) => {
+  return {
+    type: cartActionTypes.REMOVE_ITEM,
+    id,
+  };
+};

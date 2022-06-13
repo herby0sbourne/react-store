@@ -4,6 +4,7 @@ import {
   applyMiddleware,
   compose,
 } from 'redux';
+// import {persistStore} from 'redux-persist'
 import logger from 'redux-logger';
 import userReducer from './user/userReducer';
 import cartReducer from './cart/cartReducer';

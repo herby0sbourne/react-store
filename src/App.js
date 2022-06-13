@@ -5,6 +5,7 @@ import HomePage from './pages/homepage/HomePage';
 import ShopPage from './pages/shop/ShopPage';
 import CheckOutPage from './pages/checkout/CheckOutPage';
 import Header from './components/header/Header';
+import CollectionPage from './pages/category/CollectionPage';
 import SignInAndSignUp from './pages/signIn-signup//SignInSIgnUp';
 import { setCurrentUser } from './redux/user/userActions';
 import { auth, createUserProfileDocument } from './firebase/firebase';
@@ -43,7 +44,10 @@ class App extends React.Component {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
+          <Route path="shop">
+            <Route index element={<ShopPage />} />
+            <Route path=":collectionId" element={<CollectionPage />} />
+          </Route>
           <Route path="/checkout" element={<CheckOutPage />} />
           <Route
             path="/signin"
@@ -55,8 +59,6 @@ class App extends React.Component {
               )
             }
           />
-          {/* <Route path="/signin" element={<SignInAndSignUp />} /> */}
-          {/* <Route path="/" component={HomePage} exact={true} /> */}
         </Routes>
       </div>
     );

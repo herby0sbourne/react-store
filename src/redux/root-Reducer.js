@@ -6,6 +6,7 @@ import userReducer from './user/userReducer';
 import cartReducer from './cart/cartReducer';
 import directoryReducer from './directory/directoryReducer';
 import shopReducer from './shop/shopReducer';
+import spinnerReducer from './spinner/spinnerReducer';
 
 const persisConfig = {
   key: 'root',
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   shop: shopReducer,
+  spinner: spinnerReducer,
   directory: directoryReducer,
 });
 

@@ -4,18 +4,18 @@ import { useParams } from 'react-router-dom';
 import { selectCollection } from '../../redux/shop/shopSelector';
 import withRouter from '../../withRouter';
 import CollectionItem from '../../components/collection-item/CollectionItem';
-import { fetchCollectionsStartAsync } from '../../redux/shop/shopActions';
+import { fetchCollectionsStart } from '../../redux/shop/shopActions';
 import {
   selectIsCollectionFetching,
   selectIsCollectionLoaded,
 } from '../../redux/shop/shopSelector';
 import './collection.scss';
 
-const CollectionPage = ({ dispatch, isCollectionFetching }) => {
+const CollectionPage = ({ isCollectionFetching, fetchCollectionsStart }) => {
   const { collectionId } = useParams();
   const collection = useSelector(selectCollection(collectionId));
   if (!collection) {
-    dispatch(fetchCollectionsStartAsync());
+    fetchCollectionsStart();
   }
 
   // const { title, items } = collection;
@@ -44,7 +44,13 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(CollectionPage);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionPage);
 // export default withRouter(connect(mapStateToProps)(CollectionPage));
 
 /* 

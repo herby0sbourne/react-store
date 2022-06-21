@@ -35,6 +35,12 @@ const cartReducer = (state = DROPDOWN_DEFAULT, action) => {
         ),
       };
 
+    case cartActionTypes.EMPTY_CART:
+      return {
+        ...state,
+        cartItems: [],
+      };
+
     default:
       return state;
   }

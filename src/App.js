@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom'; // In react-router-dom v6, "Switch" is replaced by routes "Routes".
 import { connect } from 'react-redux';
 import Header from './components/header/Header';
@@ -10,45 +10,29 @@ import SignInAndSignUp from './pages/signIn-signup//SignInSIgnUp';
 import { checkUserSession } from './redux/user/userActions';
 import './App.css';
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    const { checkUserSession } = this.props;
+const App = ({ checkUserSession, currentUser }) => {
+  useEffect(() => {
     checkUserSession();
-  }
+  }, [checkUserSession]);
 
-  componentWillUnmount() {
-    // this.unsubscribeFromAuth();
-    // auth.signOut();
-  }
-
-  render() {
-    return (
-      <div>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="shop">
-            <Route index element={<ShopPage />} />
-            <Route path=":collectionId" element={<CollectionPage />} />
-          </Route>
-          <Route path="/checkout" element={<CheckOutPage />} />
-          <Route
-            path="/signin"
-            element={
-              this.props.currentUser ? (
-                <Navigate to="/" replace />
-              ) : (
-                <SignInAndSignUp />
-              )
-            }
-          />
-        </Routes>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="shop">
+          <Route index element={<ShopPage />} />
+          <Route path=":collectionId" element={<CollectionPage />} />
+        </Route>
+        <Route path="/checkout" element={<CheckOutPage />} />
+        <Route
+          path="/signin"
+          element={currentUser ? <Navigate to="/" replace /> : <SignInAndSignUp />}
+        />
+      </Routes>
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

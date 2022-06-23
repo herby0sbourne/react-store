@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectCollection } from '../../redux/shop/shopSelector';
@@ -14,9 +14,16 @@ import './collection.scss';
 const CollectionPage = ({ isCollectionFetching, fetchCollectionsStart }) => {
   const { collectionId } = useParams();
   const collection = useSelector(selectCollection(collectionId));
-  if (!collection) {
-    fetchCollectionsStart();
-  }
+
+  // if (!collection) {
+  //   console.log('hit');
+  //   fetchCollectionsStart();
+  // }
+  useEffect(() => {
+    if (!collection) {
+      fetchCollectionsStart();
+    }
+  }, [collection, fetchCollectionsStart]);
 
   // const { title, items } = collection;
 

@@ -1,53 +1,29 @@
 {
-  "name": "react-store",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "firebase": "8.10.0",
-    "node-sass": "^7.0.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "react-stripe-checkout": "^2.6.3",
-    "redux": "^4.2.0",
-    "redux-logger": "^3.0.6",
-    "redux-persist": "^6.0.0",
-    "redux-saga": "^1.1.3",
-    "redux-thunk": "^2.4.1",
-    "reselect": "^4.1.6",
-    "styled-components": "^5.3.5",
-    "web-vitals": "^2.1.4"
+  "name": "react-store-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/herby0sbourne/react-store.git",
+  "author": "Herby <herbyosbourne31@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.5.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "build": "cd client && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "stripe": "^9.10.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "main": "index.js",
-  "author": "Herby <herbyosbourne31@gmail.com>",
-  "license": "MIT"
+  "devDependencies": {
+    "concurrently": "^7.2.2"
+  }
 }

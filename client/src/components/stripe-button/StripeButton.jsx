@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
-import { loadStripe } from '@stripe/stripe-js';
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;

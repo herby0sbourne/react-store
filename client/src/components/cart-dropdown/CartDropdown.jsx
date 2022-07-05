@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import CartItem from '../cart-item/CartItem';
 import CustomButton from '../custom-button/CustomButton';
 import { selectCartItems } from '../../redux/cart/cartSelector';

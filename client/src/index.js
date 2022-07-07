@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { StyleSheetManager } from 'styled-components';
 import { PersistGate } from 'redux-persist/integration/react';
-import store, { persistor } from './redux/store';
+
 import App from './App';
+import store, { persistor } from './redux/store';
+import * as serviceWorker from './serviceWorkerRegistration';
 
 // import configStore from './redux/rootReducer'; // Original
 // const store = configStore(); // Original
@@ -20,9 +23,15 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <PersistGate persistor={persistor}>
-          <App />
+          <StyleSheetManager
+            disableVendorPrefixes={process.env.NODE_ENV === 'development'}
+          >
+            <App />
+          </StyleSheetManager>
         </PersistGate>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
+
+serviceWorker.register();

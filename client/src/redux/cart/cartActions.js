@@ -32,3 +32,16 @@ export const emptyCart = () => {
     type: cartActionTypes.EMPTY_CART,
   };
 };
+
+export const updateCartInFirebase = () => {
+  return {
+    type: cartActionTypes.UPDATE_CART_IN_FIREBASE,
+  };
+};
+
+export const setCartFromFirebase = (cartItems) => {
+  return {
+    type: cartActionTypes.SET_CART_FROM_FIREBASE,
+    cartItems,
+  };
+};

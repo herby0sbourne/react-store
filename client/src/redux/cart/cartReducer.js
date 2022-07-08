@@ -30,15 +30,19 @@ const cartReducer = (state = DROPDOWN_DEFAULT, action) => {
     case cartActionTypes.REMOVE_ITEM:
       return {
         ...state,
-        cartItems: state.cartItems.filter(
-          (cartItem) => cartItem.id !== action.id
-        ),
+        cartItems: state.cartItems.filter((cartItem) => cartItem.id !== action.id),
       };
 
     case cartActionTypes.EMPTY_CART:
       return {
         ...state,
         cartItems: [],
+      };
+
+    case cartActionTypes.SET_CART_FROM_FIREBASE:
+      return {
+        ...state,
+        cartItems: action.cartItems,
       };
 
     default:

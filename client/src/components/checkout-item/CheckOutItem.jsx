@@ -1,14 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  removeFromCart,
-  addToCart,
-  reduceItem,
-} from '../../redux/cart/cartActions';
+import { removeFromCart, addToCart, reduceItem } from '../../redux/cart/cartActions';
 
 import './checkout-item.scss';
 
-const CheckOutItem = ({ cartItem, removeFromCart, addItem, reduceItem }) => {
+export const CheckOutItem = ({ cartItem, removeFromCart, addItem, reduceItem }) => {
   const { id, name, imageUrl, price, quantity } = cartItem;
   return (
     <div className="checkout-item">

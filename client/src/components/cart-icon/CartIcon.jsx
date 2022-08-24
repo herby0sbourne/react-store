@@ -6,7 +6,7 @@ import { selectCartItemsCount } from '../../redux/cart/cartSelector';
 
 import './cart-icon.scss';
 
-const CartIcon = ({ toggleCart, itemsCount }) => {
+export const CartIcon = ({ toggleCart, itemsCount }) => {
   return (
     <div className="cart-icon" onClick={toggleCart}>
       <ShoppingIcon className="shopping-icon" />

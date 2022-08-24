@@ -9,7 +9,7 @@ import { toggleCartDropdown } from '../../redux/cart/cartActions';
 
 import './cart-dropdown.scss';
 
-const CartDropdown = ({ cartItems, dispatch }) => {
+export const CartDropdown = ({ cartItems, dispatch }) => {
   const navigate = useNavigate();
   return (
     <div className="cart-dropdown">

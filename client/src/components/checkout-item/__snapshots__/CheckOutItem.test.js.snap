@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ChectOutItem Component with items 1`] = `
+<div
+  className="checkout-item"
+>
+  <div
+    className="image-container"
+  >
+    <img
+      alt="hats"
+      src="www.testImage.com"
+    />
+  </div>
+  <span
+    className="name"
+  >
+    hats
+  </span>
+  <span
+    className="quantity"
+  >
+    <div
+      className="arrow"
+      onClick={[Function]}
+    >
+      ❮
+    </div>
+    <span
+      className="value"
+    >
+      2
+    </span>
+    <div
+      className="arrow"
+      onClick={[Function]}
+    >
+      ❯
+    </div>
+  </span>
+  <span
+    className="price"
+  >
+    10
+  </span>
+  <span
+    className="remove-button"
+    onClick={[Function]}
+  >
+    ✕
+  </span>
+</div>
+`;

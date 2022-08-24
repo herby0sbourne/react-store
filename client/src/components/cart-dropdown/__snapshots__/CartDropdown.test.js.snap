@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render cart dropdown with empty message 1`] = `
+<div
+  className="cart-dropdown"
+>
+  <div
+    className="cart-items"
+  >
+    <span
+      className="empty-message"
+    >
+      Your cart is empty
+    </span>
+  </div>
+  <CustomButton
+    onClick={[Function]}
+  >
+    GO TO CHECKOUT
+  </CustomButton>
+</div>
+`;
+
+exports[`should render cart dropdown with with cart item 1`] = `
+<div
+  className="cart-dropdown"
+>
+  <div
+    className="cart-items"
+  >
+    <Memo(CartItem)
+      item={
+        Object {
+          "id": 1,
+          "imageUrl": "https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_default_intro",
+          "name": "New Car",
+          "price": "1200",
+          "quantity": "3",
+        }
+      }
+      key="1"
+    />
+    <Memo(CartItem)
+      item={
+        Object {
+          "id": 2,
+          "imageUrl": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-best-washing-machines-1589999096.png?crop=0.654xw:1.00xh;0.175xw,0&resize=640:*",
+          "name": "washing Machine",
+          "price": "100",
+          "quantity": "1",
+        }
+      }
+      key="2"
+    />
+  </div>
+  <CustomButton
+    onClick={[Function]}
+  >
+    GO TO CHECKOUT
+  </CustomButton>
+</div>
+`;

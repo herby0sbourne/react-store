@@ -1,5 +1,10 @@
 {
   "name": "react-store",
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
@@ -51,5 +56,10 @@
   },
   "main": "index.js",
   "author": "Herby <herbyosbourne31@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2"
+  }
 }
